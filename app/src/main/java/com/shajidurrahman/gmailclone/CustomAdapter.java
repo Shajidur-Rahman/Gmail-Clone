@@ -25,8 +25,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             super(view);
             // Define click listener for the ViewHolder's View
 
-            textView = (TextView) view.findViewById(R.id.textView2);
-            textView2 = (TextView) view.findViewById(R.id.textView3);
+            textView = (TextView) view.findViewById(R.id.EmailTitle);
+            textView2 = (TextView) view.findViewById(R.id.EmailDesc);
         }
 
         public TextView getTextView() {

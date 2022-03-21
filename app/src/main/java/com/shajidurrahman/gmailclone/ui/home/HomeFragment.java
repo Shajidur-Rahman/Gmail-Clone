@@ -15,8 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shajidurrahman.gmailclone.CustomAdapter;
+import com.shajidurrahman.gmailclone.EmailModel;
 import com.shajidurrahman.gmailclone.R;
 import com.shajidurrahman.gmailclone.databinding.FragmentHomeBinding;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -31,7 +34,14 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        CustomAdapter cs = new CustomAdapter(arr);
+        ArrayList<EmailModel> emailModelArrayList = new ArrayList<>();
+        emailModelArrayList.add(new EmailModel("dfds", "How are you shajidur rahman "));
+        emailModelArrayList.add(new EmailModel("dfdfdfdsf", "How are you sdlfdsf rahmdfddfdan "));
+        emailModelArrayList.add(new EmailModel("fddsf", "How are you dfsderetrerewrwe rahdsfdfdfsdffffdfdman "));
+        emailModelArrayList.add(new EmailModel("fd", "How are you dfdsfds dfdsfdsf "));
+        emailModelArrayList.add(new EmailModel("dff", "How are you shajidur rahman "));
+
+        CustomAdapter cs = new CustomAdapter(emailModelArrayList);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(cs);
 

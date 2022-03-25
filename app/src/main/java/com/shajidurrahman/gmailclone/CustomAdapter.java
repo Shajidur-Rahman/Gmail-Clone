@@ -1,5 +1,6 @@
 package com.shajidurrahman.gmailclone;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.shajidurrahman.MyApplicatiion;
 
 import java.util.List;
 
@@ -25,6 +29,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         private final TextView textView;
         private final TextView textView2;
         private final ImageView EmailImage;
+        private final ConstraintLayout constr;
 
         public ViewHolder(View view) {
             super(view);
@@ -33,6 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             textView = (TextView) view.findViewById(R.id.EmailTitle);
             textView2 = (TextView) view.findViewById(R.id.EmailDesc);
             EmailImage = (ImageView) view.findViewById(R.id.EmailStar);
+            constr  = (ConstraintLayout) view.findViewById(R.id.constrainEmail);
         }
 
         public TextView getTextView() {
@@ -43,6 +49,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
         public ImageView getImage() {
             return EmailImage;
+        }
+        public ConstraintLayout getConstr() {
+            return constr;
         }
     }
 
@@ -72,6 +81,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         viewHolder.getTextView2().setText(model.getDesc());
 //        viewHolder.getImage().setBackgroundResource(R.drawable.ic_menu_camera);
 //        viewHolder.getImage().setImageResource(R.drawable.ic_menu_camera);
+
+        viewHolder.getConstr().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyApplicatiion.getAppContext(), EmailView.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                MyApplicatiion.getAppContext().startActivity(intent);
+                
+            }
+        });
+
+
 
         viewHolder.getImage().setOnClickListener(new View.OnClickListener() {
             @Override
